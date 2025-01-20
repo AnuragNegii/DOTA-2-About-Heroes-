@@ -32,7 +32,7 @@ def main():
     input_frame, keyword_entry = create_input_frame(root)
     input_frame.grid(column=0, row=0)
     
-    button_frame = create_button_frame(root)
+    button_frame = create_button_frame(root, keyword_entry)
     button_frame.grid(column=1, row=0)
     
     root.mainloop()
@@ -48,16 +48,15 @@ def create_input_frame(container)->tuple[ttk.Frame, ttk.Entry]:
     return frame, keyword
 
 
-def create_button_frame(container)->ttk.Frame:
+def create_button_frame(container, keyword_entry)->ttk.Frame:
     frame = ttk.Frame(container)
     frame.columnconfigure(0, weight=1)
     #search button
-    ttk.Button(frame, text="Search", command=lambda: search_the_string()).grid(column=0, row=0)
+    ttk.Button(frame, text="Search", command=lambda: on_search(keyword_entry)).grid(column=0, row=0)
     return frame
 
-
-def search_the_string(): 
-    print("word")
+def on_search(entry):
+    print(entry.get())
 
 if __name__ == "__main__":
     main()
