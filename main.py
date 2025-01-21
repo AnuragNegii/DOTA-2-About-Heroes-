@@ -6,9 +6,6 @@ from tkinter import ttk
 def main():
     response = requests.get("https://api.opendota.com/api/heroes")
     list_of_heroes= response.json()
-    with open("new.txt", "w") as file:
-        for dict in list_of_heroes:
-            print(dict, file=file)
     root = tk.Tk()
     root.title("DOTA_HEROES")
     title = root.title()
